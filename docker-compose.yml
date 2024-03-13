@@ -1,0 +1,36 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:alpine
+    container_name: online_shop_db
+    volumes:
+      - ~/docker-data/psql:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bash -c "cd /app/backend && python manage.py migrate && python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_HOST=db
+      - DB_PORT=5432
+
+    ports:
+      - '8000:8000'
+
+    volumes:
+      - ./:/app/backend
+    env_file:
+      - .env
+    depends_on:
+      - db
