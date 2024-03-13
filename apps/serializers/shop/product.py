@@ -1,9 +1,9 @@
 from rest_framework import serializers
 
-from apps.models import Banner
+from apps.models import Product
 
 
 class ProductListSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Banner
-        fields = ('id', 'name', 'image')
+        model = Product
+        fields = ('id', 'name', 'description', 'price', 'is_discount', 'discount_price')
