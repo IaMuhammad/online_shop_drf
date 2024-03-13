@@ -1,6 +1,7 @@
 from django.urls import path
 
-from apps.views.shop import BannerListAPIView, CategoryListAPIView, ProductListAPIView
+from apps.views.shop import BannerListAPIView, CategoryListAPIView, ProductListAPIView, FlowCreateAPIView, \
+    FlowListAPIView
 from apps.views.users import SignInGenericAPIView, UserCreateAPIView
 
 urlpatterns = [
@@ -10,4 +11,7 @@ urlpatterns = [
     path('banners', BannerListAPIView.as_view()),
     path('categories', CategoryListAPIView.as_view()),
     path('products', ProductListAPIView.as_view()),
+
+    path('flow-create', FlowCreateAPIView.as_view()),
+    path('flows', FlowListAPIView.as_view()),
 ]
