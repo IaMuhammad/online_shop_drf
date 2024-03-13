@@ -33,11 +33,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # my apps
-    'apps.apps.AppConfig',
+    'apps.apps.AppsConfig',
 
     # installs
     'parler',
-    'rosetta',
+    'rest_framework',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -162,4 +163,13 @@ JAZZMIN_SETTINGS = {
 
     # Add a language dropdown into the admin
     "language_chooser": True,
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
 }

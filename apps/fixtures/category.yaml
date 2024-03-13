@@ -1,0 +1,56 @@
+Category:
+  - fields:
+      id: 1
+      translations:
+        - language_code: en
+          name: "Electronics"
+      icon: "/category/electronics.jpg"
+
+  - fields:
+      id: 2
+      translations:
+        - language_code: en
+          name: "Household appliances"
+      icon: "/category/household_appliances.jpg"
+
+  - fields:
+      id: 3
+      translations:
+        - language_code: en
+          name: "Clothes"
+      icon: "/category/clothes.jpg"
+
+  - fields:
+      id: 4
+      translations:
+        - language_code: en
+          name: "Accessories"
+      icon: "/category/accessories.jpg"
+
+  - fields:
+      id: 5
+      translations:
+        - language_code: en
+          name: "Beautiful"
+      icon: "/category/beautiful.jpg"
+
+  - fields:
+      id: 6
+      translations:
+        - language_code: en
+          name: "Books"
+      icon: "/category/books.jpg"
+
+  - fields:
+      id: 7
+      translations:
+        - language_code: en
+          name: "Household items"
+      icon: "/category/household_items.jpg"
+
+  - fields:
+      id: 8
+      translations:
+        - language_code: en
+          name: "Construction and Repair"
+      icon: "/category/construction_and_repair.jpg"

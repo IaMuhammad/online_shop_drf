@@ -153,9 +153,7 @@ class Like(models.Model):
 
 
 class Banner(TranslatableModel):
-    translate = TranslatedFields(
-        name=models.CharField(max_length=255)
-    )
+    name = models.CharField(max_length=255)
     image = models.ImageField(verbose_name=_('image'), upload_to='banner/%Y/%m/')
     is_active = models.BooleanField(verbose_name=_('is_active'), default=True)
 
