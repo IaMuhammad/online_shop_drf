@@ -21,5 +21,3 @@ makemessages:
 
 compile:
 	django-admin compilemessages --ignore=env
-
-

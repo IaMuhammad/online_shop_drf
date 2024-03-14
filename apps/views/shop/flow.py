@@ -13,9 +13,9 @@ class FlowListAPIView(ListAPIView):
     serializer_class = FlowListSerializer
 
     @swagger_auto_schema(tags=['shop'])
+
     def get(self, request, *args, **kwargs):
-        qs = Flow.objects.filter(is_active=True)
-        return Response(qs)
+        return super().get(request, *args, **kwargs)
 
 
 class FlowCreateAPIView(CreateAPIView):
