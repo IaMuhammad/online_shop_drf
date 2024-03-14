@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -16,6 +18,8 @@ class User(AbstractUser):
     role = models.CharField(max_length=55, choices=Role.choices, default=Role.ADMIN)
     username = None
     phone_number = models.CharField(_("Phone number"), max_length=14, unique=True)
+    balance = models.DecimalField(_("Balance"), max_digits=99, decimal_places=2, default=Decimal(0))
+    all_balance = models.DecimalField(_("Balance"), max_digits=99, decimal_places=2, default=Decimal(0))
 
     USERNAME_FIELD = 'phone_number'
     objects = UserManager()
