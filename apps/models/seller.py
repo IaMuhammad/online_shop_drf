@@ -5,8 +5,6 @@ from django.utils.translation import gettext_lazy as _
 # Create your models here.
 
 class Flow(models.Model):
-    # translate = TranslatedFields(
-    # )
     name = models.CharField(verbose_name=_('name'), max_length=255, null=False, blank=False)
     user = models.ForeignKey('apps.User', verbose_name=_('user'), on_delete=models.CASCADE)
     product = models.ForeignKey('apps.Product', verbose_name=_('product'), on_delete=models.CASCADE)
@@ -16,6 +14,42 @@ class Flow(models.Model):
     class Meta:
         verbose_name = _('Flow')
         verbose_name_plural = _('Flows')
+
+    @property
+    def get_new(self):
+        return self.order_set.filter(status=Order.Status.NEW).count()
+
+    @property
+    def get_accepted(self):
+        return self.order_set.filter(status=Order.Status.ACCEPTED).count()
+
+    @property
+    def get_delivering(self):
+        return self.order_set.filter(status=Order.Status.DELIVERING).count()
+
+    @property
+    def get_completed(self):
+        return self.order_set.filter(status=Order.Status.COMPLETED).count()
+
+    @property
+    def get_recall(self):
+        return self.order_set.filter(status=Order.Status.RECALL).count()
+
+    @property
+    def get_spam(self):
+        return self.order_set.filter(status=Order.Status.SPAM).count()
+
+    @property
+    def get_canceled(self):
+        return self.order_set.filter(status=Order.Status.CANCELED).count()
+
+    @property
+    def get_hold(self):
+        return self.order_set.filter(status=Order.Status.HOLD).count()
+
+    @property
+    def get_archived(self):
+        return self.order_set.filter(status=Order.Status.ARCHIVED).count()
 
     def __str__(self):
         return f"{self.user} -> {self.name}"

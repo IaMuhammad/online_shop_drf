@@ -175,7 +175,6 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'apps.utils.pagination.CustomPagination',
 }
 
-
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
         'Bearer': {

@@ -7,7 +7,7 @@ from apps.serializers.shop.product import ProductListSerializer
 
 class ProductListAPIView(ListAPIView):
     serializer_class = ProductListSerializer
-    queryset = Product.objects.all()
+    queryset = Product.objects.order_by('id')
 
     @swagger_auto_schema(tags=['shop'])
     def get(self, request, *args, **kwargs):
