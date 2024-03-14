@@ -124,25 +124,6 @@ class ProductAttribute(TranslatableModel):
         return f"{self.attribute.name} -> {self.product.name}"
 
 
-class Basket(models.Model):
-    user = models.ForeignKey('apps.User', verbose_name=_('user'), on_delete=models.CASCADE)
-    products = models.ManyToManyField('apps.ProductAttribute', verbose_name=_('products'), through='apps.BasketProduct')
-
-    class Meta:
-        verbose_name = _('Basket')
-        verbose_name_plural = _('Baskets')
-
-
-class BasketProduct(models.Model):
-    basket = models.ForeignKey('apps.Basket', verbose_name=_('basket'), on_delete=models.CASCADE)
-    product = models.ForeignKey('apps.ProductAttribute', verbose_name=_('product'), on_delete=models.CASCADE)
-    quantity = models.IntegerField(verbose_name=_('quantity'), )
-
-    class Meta:
-        verbose_name = _('BasketProduct')
-        verbose_name_plural = _('BasketProducts')
-
-
 class Like(models.Model):
     user = models.ForeignKey('apps.User', verbose_name=_('user'), on_delete=models.CASCADE, unique=True)
     products = models.ManyToManyField('apps.Product', verbose_name=_('products'))
@@ -163,3 +144,9 @@ class Banner(TranslatableModel):
     class Meta:
         verbose_name = _('Banner')
         verbose_name_plural = _('Banners')
+
+
+class Request(models.Model):
+    user = models.ForeignKey('apps.User', verbose_name=_('user'), on_delete=models.CASCADE)
+    card = models.PositiveIntegerField()
+    money = models.PositiveIntegerField()
