@@ -1,7 +1,7 @@
 version: '3.9'
 
 services:
-  db:
+  online_shop_db:
     image: postgres:alpine
     container_name: online_shop_db
     volumes:
@@ -33,4 +33,4 @@ services:
     env_file:
       - .env
     depends_on:
-      - db
+      - online_shop_db

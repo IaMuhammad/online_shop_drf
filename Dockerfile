@@ -1,11 +1,12 @@
 FROM python:3.10
 
-WORKDIR .
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
-# Copy the project files to the working directory
-COPY . /app/backend
+WORKDIR /code
 
-RUN cd /app/backend && pip install -r requirements.txt
+COPY requirements.txt /code/
 
-# Expose the port that Django runs on (default is 8000)
-EXPOSE 8000
+RUN pip install -r requirements.txt
+
+COPY . /code/
