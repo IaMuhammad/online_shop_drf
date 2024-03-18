@@ -14,7 +14,7 @@ class SignInSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     email = serializers.EmailField(read_only=True, required=False)
     phone_number = serializers.CharField()
-    password = serializers.CharField(write_only=True)
+    code = serializers.CharField(write_only=True)
     first_name = serializers.CharField(read_only=True)
     last_name = serializers.CharField(read_only=True)
     role = serializers.CharField(read_only=True)
@@ -23,9 +23,7 @@ class SignInSerializer(serializers.Serializer):
 
     class Meta:
         model = User
-        fields = (
-            'id', 'email', 'password', 'first_name', 'last_name', 'role', 'phone_number', 'tokens', 'permissions'
-        )
+        fields = ('id', 'email', 'first_name', 'last_name', 'role', 'phone_number', 'tokens', 'permissions', 'code')
 
         extra_kwargs = {
             'created_by': {'read_only': True},
@@ -60,9 +58,13 @@ class SignInSerializer(serializers.Serializer):
         return obj
 
     def validate(self, attrs):
+        code = attrs.pop('code', '')
         phone_number = attrs.get('phone_number', '')
-        password = attrs.get('password', '')
-        user = authenticate(phone_number=phone_number, password=password)
+
+        if code != '0000':
+            raise serializers.ValidationError(_('Send wrong code!'))
+
+        user = User.objects.filter(phone_number=phone_number).first()
         if not user:
             raise AuthenticationFailed(_('Hisob maʼlumotlari notoʻgʻri, qayta urinib koʻring'))
         if not user.is_active:
@@ -75,4 +77,25 @@ class SignInSerializer(serializers.Serializer):
             'first_name': user.first_name,
             'last_name': user.last_name,
             'role': user.role,
+        }
+
+
+class SendMessageSerializer(serializers.Serializer):
+    phone_number = serializers.CharField()
+    password = serializers.CharField(write_only=True)
+
+    class Meta:
+        fields = ('phone_number', 'password')
+
+    def validate(self, attrs):
+        phone_number = attrs.get('phone_number', '')
+        password = attrs.get('password', '')
+
+        user = authenticate(phone_number=phone_number, password=password)
+        if not user:
+            raise AuthenticationFailed(_('Hisob maʼlumotlari notoʻgʻri, qayta urinib koʻring'))
+        if not user.is_active:
+            raise AuthenticationFailed(_("Hisob o'chirilgan, administrator bilan bog'laning"))
+        return {
+            'status': _("We sent message to your mobile number")
         }

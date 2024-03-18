@@ -4,9 +4,11 @@ from apps.views.shop import BannerListAPIView, CategoryListAPIView, ProductListA
     FlowListAPIView
 from apps.views.shop.flow import FlowStatisticsListAPIView
 from apps.views.shop.request import RequestCreateAPIView, RequestListAPIView
-from apps.views.users import SignInGenericAPIView, UserCreateAPIView, BalanceRetrieveAPIView
+from apps.views.users import SignInGenericAPIView, UserCreateAPIView, BalanceRetrieveAPIView, \
+    ConfirmSMSCodeGenericAPIView
 
 urlpatterns = [
+    path('send-message', ConfirmSMSCodeGenericAPIView.as_view()),
     path('sign-in', SignInGenericAPIView.as_view()),
     path('sign-up', UserCreateAPIView.as_view()),
 
