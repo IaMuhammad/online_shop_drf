@@ -2,9 +2,11 @@ asgiref==3.7.2
 certifi==2024.2.2
 charset-normalizer==3.3.2
 Django==4.2.3
+django-cors-headers==4.3.1
 django-filter==24.1
 django-jazzmin==2.6.0
 django-parler==2.3
+django-parler-rest==2.2
 django-rosetta==0.10.0
 djangorestframework==3.14.0
 djangorestframework-simplejwt==5.3.1
