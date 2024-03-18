@@ -133,7 +133,7 @@ class Like(models.Model):
         verbose_name_plural = _('Likes')
 
 
-class Banner(TranslatableModel):
+class Banner(models.Model):
     name = models.CharField(max_length=255)
     image = models.ImageField(verbose_name=_('image'), upload_to='banner/%Y/%m/')
     is_active = models.BooleanField(verbose_name=_('is_active'), default=True)

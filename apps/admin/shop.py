@@ -56,7 +56,7 @@ class ProductAdmin(TranslatableAdmin):
 
 
 @admin.register(Banner)
-class BannerAdmin(TranslatableAdmin):
+class BannerAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'picture', 'is_active')
 
     def picture(self, obj: Banner):
