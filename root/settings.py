@@ -117,10 +117,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'uz'
 
 LANGUAGES = (
-    ('en', _("English")),
     ('uz', _('Uzbek')),
     ('ru', _('Russian')),
 )
@@ -146,12 +145,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 PARLER_LANGUAGES = {
     None: (
-        {'code': 'en'},  # English
         {'code': 'uz'},  # Uzbek
         {'code': 'ru'},  # Russian
     ),
     'default': {
-        'fallback': 'en',  # defaults to PARLER_DEFAULT_LANGUAGE_CODE
+        'fallback': 'uz',  # defaults to PARLER_DEFAULT_LANGUAGE_CODE
         'hide_untranslated': False,  # the default; let .active_translations() return fallbacks too.
     }
 }
