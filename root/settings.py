@@ -183,10 +183,21 @@ SWAGGER_SETTINGS = {
     'PERSIST_AUTH': True  # Please dont delete or comment this
 }
 
-CORS_ALLOWED_ORIGINS = [
-    "https://dev.mokhamed.com",
-    "http://localhost:8087",
-]
+CORS_ORIGIN_ALLOW_ALL = True
+
+# CORS_ALLOWED_ORIGINS = [
+#     "https://dev.mokhamed.com",
+#     "http://localhost:8087",
+#     "http://iamuhammad.jprq.app",
+#     "https://iamuhammad.jprq.app",
+# ]
+#
+# CORS_ORIGIN_WHITELIST = [
+#     "https://dev.mokhamed.com",
+#     "http://localhost:8087",
+#     "http://iamuhammad.jprq.app",
+#     "https://iamuhammad.jprq.app",
+# ]
 
 CORS_ALLOW_METHODS = (
     "DELETE",
