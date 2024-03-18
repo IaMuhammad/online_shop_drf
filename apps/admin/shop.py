@@ -51,7 +51,7 @@ class ProductAdmin(TranslatableAdmin):
 
     fieldsets = [
         (None, {'fields': ['name', 'delivery', 'description']}),
-        ('Details', {'fields': ['category', 'price', 'is_discount', 'discount_price', 'quantity']}),
+        ('Details', {'fields': ['category', 'price', 'is_discount', 'discount_price', 'quantity', 'pay']}),
     ]
 
 
