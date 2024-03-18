@@ -1,4 +1,5 @@
 from drf_yasg.utils import swagger_auto_schema
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -11,5 +12,6 @@ class BannerListAPIView(APIView):
 
     @swagger_auto_schema(tags=['shop'])
     def get(self, request, *args, **kwargs):
-        qs = Banner.objects.filter(is_active=True)
-        return Response(qs)
+        banners = Banner.objects.filter(is_active=True)
+        serializer = self.serializer_class(banners, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

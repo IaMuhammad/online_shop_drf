@@ -58,6 +58,7 @@ class Product(TranslatableModel):
     )
     category = models.ForeignKey('apps.Category', verbose_name=_('category'), on_delete=models.PROTECT)
     price = models.DecimalField(verbose_name=_('price'), max_digits=99, decimal_places=2)
+    pay = models.DecimalField(verbose_name=_('Give price'), max_digits=99, decimal_places=2, default=Decimal(0))
     is_discount = models.BooleanField(verbose_name=_('is_discount'), default=False)
     discount_price = models.DecimalField(verbose_name=_('discount_price'), max_digits=99, decimal_places=2,
                                          default=Decimal(0), blank=True)
