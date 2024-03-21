@@ -10,13 +10,14 @@ from apps.views.shop.request import RequestCreateAPIView, RequestListAPIView
 from apps.views.users import SignInGenericAPIView, UserCreateAPIView, BalanceRetrieveAPIView, \
     ConfirmSMSCodeGenericAPIView
 from apps.views.users.change_password import UserChangePasswordAPIVIew
+from apps.views.users.update import UserUpdateAPIVIew
 
 urlpatterns = [
     path('send-message', ConfirmSMSCodeGenericAPIView.as_view()),
     path('sign-in', SignInGenericAPIView.as_view()),
     path('sign-up', UserCreateAPIView.as_view()),
 
-    path('user-update/<int:pk>', UserCreateAPIView.as_view()),
+    path('user-update/<int:pk>', UserUpdateAPIVIew.as_view()),
     path('change-password/<int:pk>', UserChangePasswordAPIVIew.as_view()),
 
     path('balance/<int:pk>', BalanceRetrieveAPIView.as_view()),
