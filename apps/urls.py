@@ -6,6 +6,7 @@ from apps.views.shop import BannerListAPIView, CategoryListAPIView, ProductListA
 from apps.views.shop.flow import FlowStatisticsListAPIView
 from apps.views.shop.like_product import LikeProductListAPIView, LikeProductCreateAPIView
 from apps.views.shop.market_product import MarketProductListAPIView
+from apps.views.shop.product import ProductDetailRetrieveAPIView
 from apps.views.shop.request import RequestCreateAPIView, RequestListAPIView
 from apps.views.users import SignInGenericAPIView, UserCreateAPIView, BalanceRetrieveAPIView, \
     ConfirmSMSCodeGenericAPIView
@@ -28,6 +29,7 @@ urlpatterns = [
     path('banners', BannerListAPIView.as_view()),
     path('categories', CategoryListAPIView.as_view()),
     path('products', ProductListAPIView.as_view()),
+    path('product/<int:pk>', ProductDetailRetrieveAPIView.as_view()),
     path('like-products', LikeProductListAPIView.as_view()),
     path('like-product', LikeProductCreateAPIView.as_view()),
 

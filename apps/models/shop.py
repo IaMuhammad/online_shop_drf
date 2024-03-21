@@ -62,7 +62,7 @@ class Product(TranslatableModel):
     is_discount = models.BooleanField(verbose_name=_('is_discount'), default=False)
     discount_price = models.DecimalField(verbose_name=_('discount_price'), max_digits=99, decimal_places=2,
                                          default=Decimal(0), blank=True)
-    quantity = models.IntegerField(verbose_name=_('quantity'), )
+    quantity = models.IntegerField(verbose_name=_('quantity'))
 
     class Meta:
         verbose_name = _('Product')
@@ -92,6 +92,29 @@ class Product(TranslatableModel):
             return self.image_set.filter(is_main=True).first()
         return self.image_set.first()
 
+    @property
+    def get_color(self):
+        colors = []
+        for item in self.productattribute_set.filter(attribute__code='color'):
+            colors.append({
+                'id': item.pk,
+                'value': item.value,
+                'image': item.image.url if item.image else '',
+                'attribute__name': item.attribute.name,
+            })
+        return colors
+
+    @property
+    def get_size(self):
+        sizes = []
+        for item in self.productattribute_set.filter(attribute__code='size'):
+            sizes.append({
+                'id': item.pk,
+                'value': item.value,
+                'attribute__name': item.attribute.name,
+            })
+        return sizes
+
     def __str__(self):
         return self.name
 
@@ -100,6 +123,8 @@ class Attribute(TranslatableModel):
     translate = TranslatedFields(
         name=models.CharField(max_length=255)
     )
+
+    code = models.CharField(max_length=255)
 
     class Meta:
         verbose_name = _('Attribute')

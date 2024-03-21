@@ -7,3 +7,27 @@ class ProductListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ('id', 'name', 'description', 'price', 'is_discount', 'discount_price')
+
+
+class ProductDetailSerializer(serializers.ModelSerializer):
+    order_count = serializers.SerializerMethodField()
+    color = serializers.SerializerMethodField()
+    size = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Product
+        fields = (
+            'id', 'name', 'description', 'delivery', 'price', 'is_discount', 'discount_price', 'order_count', 'color',
+            'size',
+        )
+
+    def get_order_count(self, obj: Product):
+        return 0
+
+    @staticmethod
+    def get_color(obj: Product):
+        return obj.get_color
+
+    @staticmethod
+    def get_size(obj: Product):
+        return obj.get_size
