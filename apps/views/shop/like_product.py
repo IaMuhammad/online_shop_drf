@@ -24,6 +24,7 @@ class LikeProductCreateAPIView(CreateAPIView):
     serializer_class = LikeModelSerializer
     permission_classes = [IsAuthenticated]
 
+    @swagger_auto_schema(tags=['shop'])
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)

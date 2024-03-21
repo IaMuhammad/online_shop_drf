@@ -6,6 +6,7 @@ from apps.views.shop import BannerListAPIView, CategoryListAPIView, ProductListA
 from apps.views.shop.flow import FlowStatisticsListAPIView
 from apps.views.shop.like_product import LikeProductListAPIView, LikeProductCreateAPIView
 from apps.views.shop.market_product import MarketProductListAPIView
+from apps.views.shop.order import OrderCreateAPIView
 from apps.views.shop.product import ProductDetailRetrieveAPIView
 from apps.views.shop.request import RequestCreateAPIView, RequestListAPIView
 from apps.views.users import SignInGenericAPIView, UserCreateAPIView, BalanceRetrieveAPIView, \
@@ -34,6 +35,8 @@ urlpatterns = [
     path('like-product', LikeProductCreateAPIView.as_view()),
 
     path('market-products', MarketProductListAPIView.as_view()),
+
+    path('order-create', OrderCreateAPIView.as_view()),
 
     path('flow-create', FlowCreateAPIView.as_view()),
     path('flows', FlowListAPIView.as_view()),

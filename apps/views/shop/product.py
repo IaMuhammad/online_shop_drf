@@ -17,3 +17,9 @@ class ProductListAPIView(ListAPIView):
 class ProductDetailRetrieveAPIView(RetrieveAPIView):
     serializer_class = ProductDetailSerializer
     queryset = Product.objects.order_by('-id')
+
+    @swagger_auto_schema(tags=['shop'])
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
+
+
