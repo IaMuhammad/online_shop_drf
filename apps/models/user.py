@@ -10,6 +10,15 @@ from apps.managers import UserManager
 
 # Create your models here.
 
+class Region(models.Model):
+    name = models.CharField(max_length=55)
+
+
+class District(models.Model):
+    name = models.CharField(max_length=255)
+    region = models.ForeignKey('apps.Region', on_delete=models.CASCADE)
+
+
 class User(AbstractUser):
     class Role(models.TextChoices):
         ADMIN = "admin", _("Admin")
@@ -20,6 +29,11 @@ class User(AbstractUser):
     phone_number = models.CharField(_("Phone number"), max_length=14, unique=True)
     balance = models.DecimalField(_("Balance"), max_digits=99, decimal_places=2, default=Decimal(0))
     all_balance = models.DecimalField(_("Balance"), max_digits=99, decimal_places=2, default=Decimal(0))
+    district = models.ForeignKey('apps.District', on_delete=models.CASCADE, null=True, blank=True)
+
+    @property
+    def get_region(self):
+        return self.district.region.name
 
     USERNAME_FIELD = 'phone_number'
     objects = UserManager()

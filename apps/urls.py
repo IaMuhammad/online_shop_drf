@@ -1,5 +1,6 @@
 from django.urls import path
 
+from apps.views.selectable import RegionSelectListAPIView, DistrictSelectListAPIView
 from apps.views.shop import BannerListAPIView, CategoryListAPIView, ProductListAPIView, FlowCreateAPIView, \
     FlowListAPIView
 from apps.views.shop.flow import FlowStatisticsListAPIView
@@ -8,11 +9,15 @@ from apps.views.shop.market_product import MarketProductListAPIView
 from apps.views.shop.request import RequestCreateAPIView, RequestListAPIView
 from apps.views.users import SignInGenericAPIView, UserCreateAPIView, BalanceRetrieveAPIView, \
     ConfirmSMSCodeGenericAPIView
+from apps.views.users.change_password import UserChangePasswordAPIVIew
 
 urlpatterns = [
     path('send-message', ConfirmSMSCodeGenericAPIView.as_view()),
     path('sign-in', SignInGenericAPIView.as_view()),
     path('sign-up', UserCreateAPIView.as_view()),
+
+    path('user-update/<int:pk>', UserCreateAPIView.as_view()),
+    path('change-password/<int:pk>', UserChangePasswordAPIVIew.as_view()),
 
     path('balance/<int:pk>', BalanceRetrieveAPIView.as_view()),
 
@@ -28,4 +33,7 @@ urlpatterns = [
     path('flow-create', FlowCreateAPIView.as_view()),
     path('flows', FlowListAPIView.as_view()),
     path('flow-statistics', FlowStatisticsListAPIView.as_view()),
+
+    path('region-select', RegionSelectListAPIView.as_view()),
+    path('district-select', DistrictSelectListAPIView.as_view()),
 ]
