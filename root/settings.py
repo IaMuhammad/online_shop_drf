@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 from pathlib import Path
 
 from django.utils.translation import gettext_lazy as _
@@ -180,7 +181,14 @@ SWAGGER_SETTINGS = {
             'in': 'header'
         }
     },
-    'PERSIST_AUTH': True  # Please dont delete or comment this
+    'PERSIST_AUTH': True,  # Please dont delete or comment this
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=365),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
+
+    "TOKEN_OBTAIN_SERIALIZER": "users.serializers.token.CustomTokenObtainPairSerializer",
 }
 
 CORS_ORIGIN_ALLOW_ALL = True

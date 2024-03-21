@@ -3,6 +3,7 @@ from decimal import Decimal
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from parler.models import TranslatableModel, TranslatedFields
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from apps.managers import UserManager
@@ -10,13 +11,14 @@ from apps.managers import UserManager
 
 # Create your models here.
 
-class Region(models.Model):
-    name = models.CharField(max_length=55)
+
+class Region(TranslatableModel):
+    name = models.CharField(verbose_name=_('name'), max_length=255)
 
 
-class District(models.Model):
-    name = models.CharField(max_length=255)
-    region = models.ForeignKey('apps.Region', on_delete=models.CASCADE)
+class District(TranslatableModel):
+    name = models.CharField(verbose_name=_('name'), max_length=255)
+    region = models.ForeignKey('Region', on_delete=models.CASCADE)
 
 
 class User(AbstractUser):
