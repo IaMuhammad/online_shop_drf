@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -97,6 +99,7 @@ class Order(models.Model):
     customer_address = models.CharField(verbose_name=_('customer_address'), default='', max_length=255, null=True,
                                         blank=True)
     quantity = models.IntegerField(verbose_name=_('quantity'), default=1, null=False, blank=False)
+    price = models.DecimalField(verbose_name=_('price'), max_digits=99, decimal_places=2, default=Decimal(0))
     created_at = models.DateTimeField(verbose_name=_('created_at'), auto_now_add=True)
 
     class Meta:
