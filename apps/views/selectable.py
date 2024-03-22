@@ -30,3 +30,4 @@ class DistrictSelectListAPIView(ListAPIView):
     @swagger_auto_schema(tags=['selectable'])
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
+
