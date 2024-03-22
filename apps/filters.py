@@ -13,3 +13,9 @@ class OrderFilter(django_filters.FilterSet):
     class Meta:
         model = Order
         fields = ['status', 'color', 'size', 'product']
+
+
+class LikeFilter(django_filters.FilterSet):
+    class Meta:
+        model = Product
+        fields = ['category']

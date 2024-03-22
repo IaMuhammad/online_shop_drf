@@ -1,8 +1,11 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from drf_yasg.utils import swagger_auto_schema
+from rest_framework.filters import SearchFilter
 from rest_framework.generics import ListAPIView, CreateAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
+from apps.filters import LikeFilter
 from apps.models import Product, Like
 from apps.serializers.shop.like import LikeListSerializer, LikeModelSerializer
 
@@ -10,6 +13,9 @@ from apps.serializers.shop.like import LikeListSerializer, LikeModelSerializer
 class LikeProductListAPIView(ListAPIView):
     serializer_class = LikeListSerializer
     permission_classes = [IsAuthenticated]
+    filter_backends = [DjangoFilterBackend, SearchFilter]
+    search_fields = ['name']
+    filterset_class = LikeFilter
 
     def get_queryset(self):
         return Product.objects.filter(like__user=self.request.user)
