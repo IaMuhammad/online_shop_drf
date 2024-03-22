@@ -4,9 +4,16 @@ from apps.models import Product
 
 
 class ProductListSerializer(serializers.ModelSerializer):
+    category = serializers.SerializerMethodField()
     class Meta:
         model = Product
-        fields = ('id', 'name', 'description', 'price', 'is_discount', 'discount_price')
+        fields = ('id', 'name', 'description', 'price', 'is_discount', 'discount_price', 'category')
+
+    def get_category(self, obj: Product):
+        return {
+            'id': obj.category.id,
+            'name': obj.category.name,
+        }
 
 
 class ProductDetailSerializer(serializers.ModelSerializer):
