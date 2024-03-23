@@ -13,10 +13,12 @@ from apps.views.users import SignInGenericAPIView, UserCreateAPIView, BalanceRet
     ConfirmSMSCodeGenericAPIView
 from apps.views.users.change_number import UserChangePhoneNumberAPIVIew
 from apps.views.users.change_password import UserChangePasswordAPIVIew
+from apps.views.users.send_message import SendMessageAPIView
 from apps.views.users.update import UserUpdateAPIVIew
 
 urlpatterns = [
     path('send-message', ConfirmSMSCodeGenericAPIView.as_view()),
+    path('send-message-api', SendMessageAPIView.as_view()),
     path('sign-in', SignInGenericAPIView.as_view()),
     path('sign-up', UserCreateAPIView.as_view()),
 

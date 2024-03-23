@@ -6,8 +6,8 @@ from apps.models import User
 
 
 class UserChangeNumberModelSerializer(serializers.ModelSerializer):
-    check_password = serializers.CharField(max_length=255)
+    code = serializers.CharField(max_length=255)
 
     class Meta:
         model = User
-        fields = ('id', 'phone_number')
+        fields = ('id', 'phone_number', 'code')
