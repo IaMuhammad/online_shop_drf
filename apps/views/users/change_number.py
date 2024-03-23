@@ -3,12 +3,13 @@ from rest_framework.generics import UpdateAPIView
 from rest_framework.permissions import IsAuthenticated
 
 from apps.models import User
+from apps.serializers.users.change_number import UserChangeNumberModelSerializer
 from apps.serializers.users.change_password import UserChangePasswordModelSerializer
 
 
-class UserChangePasswordAPIVIew(UpdateAPIView):
+class UserChangePhoneNumberAPIVIew(UpdateAPIView):
     queryset = User.objects.all()
-    serializer_class = UserChangePasswordModelSerializer
+    serializer_class = UserChangeNumberModelSerializer
     permission_classes = [IsAuthenticated]
 
     @swagger_auto_schema(tags=['user'])

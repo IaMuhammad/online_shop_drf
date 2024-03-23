@@ -10,7 +10,7 @@ class UserChangeNumberModelSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'phone_number')
+        fields = ('id', 'phone_number', 'code')
 
     def validate_check_password(self, value):
         if check_password(value, self.instance.password):
