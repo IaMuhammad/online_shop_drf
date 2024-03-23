@@ -182,8 +182,6 @@ SWAGGER_SETTINGS = {
         }
     },
     'PERSIST_AUTH': True,  # Please dont delete or comment this
-    "ACCESS_TOKEN_LIFETIME": timedelta(days=365),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 
     "AUTH_HEADER_TYPES": ("Bearer",),
     "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
@@ -191,6 +189,15 @@ SWAGGER_SETTINGS = {
     "TOKEN_OBTAIN_SERIALIZER": "users.serializers.token.CustomTokenObtainPairSerializer",
 }
 
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=2),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=5),
+
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
+
+    "TOKEN_OBTAIN_SERIALIZER": "users.serializers.token.CustomTokenObtainPairSerializer",
+}
 CORS_ORIGIN_ALLOW_ALL = True
 
 # CORS_ALLOWED_ORIGINS = [
