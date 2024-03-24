@@ -11,9 +11,13 @@ class FlowListSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'product',)
 
     def get_product(self, obj):
+        if obj.product.get_image:
+            image = self.context.get('request')._current_scheme_host + obj.product.get_image.image.url
+        else:
+            image = ''
         return {
             'id': obj.product.id,
             'name': obj.product.name,
             'description': obj.product.description,
-            'get_image': self.context.get('request')._current_scheme_host + obj.product.get_image.image.url
+            'get_image': image
         }
