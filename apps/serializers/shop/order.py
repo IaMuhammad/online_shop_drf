@@ -31,10 +31,11 @@ class OrderListModelSerializer(serializers.ModelSerializer):
         )
 
     def get_product(self, obj: Order):
+        image = obj.product.get_image.image.url if obj.product.get_image else ''
         return {
             'id': obj.product.id,
             'name': obj.product.name,
-            'image': obj.product.get_image.image.url,
+            'image': image,
         }
 
     def get_color(self, obj: Order):
