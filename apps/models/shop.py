@@ -68,6 +68,9 @@ class Product(TranslatableModel):
         verbose_name = _('Product')
         verbose_name_plural = _('Products')
 
+    def is_liked(self, user):
+        return Like.objects.filter(products__in=[self], user=user).exists()
+
     @property
     def liked_users(self):
         return self.like_set.values_list('user_id', flat=True)

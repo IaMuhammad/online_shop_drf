@@ -5,10 +5,17 @@ from apps.models import Product, Like
 
 class ProductListSerializer(serializers.ModelSerializer):
     category = serializers.SerializerMethodField()
+    is_liked = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
-        fields = ('id', 'name', 'description', 'price', 'is_discount', 'discount_price', 'category')
+        fields = ('id', 'name', 'description', 'price', 'is_discount', 'discount_price', 'category', 'is_liked')
+
+    def get_is_liked(self, obj: Product):
+        user = self.context.get('request').user
+        if user.is_authenticated:
+            return obj.is_liked(user)
+        return False
 
     def get_category(self, obj: Product):
         return {
@@ -36,7 +43,7 @@ class ProductDetailSerializer(serializers.ModelSerializer):
     def get_is_liked(self, obj: Product):
         user = self.context.get('request').user
         if user.is_authenticated:
-            return Like.objects.filter(user=user, products__in=[obj]).exists()
+            return obj.is_liked(user)
         return False
 
     @staticmethod
