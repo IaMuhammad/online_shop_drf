@@ -5,9 +5,5 @@ from rest_framework import serializers
 from apps.models import User
 
 
-class UserChangeNumberModelSerializer(serializers.ModelSerializer):
-    code = serializers.CharField(max_length=255)
-
-    class Meta:
-        model = User
-        fields = ('id', 'phone_number', 'code')
+class UserChangeNumberSerializer(serializers.Serializer):
+    phone_number = serializers.CharField()
