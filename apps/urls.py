@@ -3,6 +3,7 @@ from django.urls import path
 from apps.views.selectable import RegionSelectListAPIView, DistrictSelectListAPIView
 from apps.views.shop import BannerListAPIView, CategoryListAPIView, ProductListAPIView, FlowCreateAPIView, \
     FlowListAPIView
+from apps.views.shop.delete import FlowDestroyAPIView
 from apps.views.shop.flow import FlowStatisticsListAPIView
 from apps.views.shop.like_product import LikeProductListAPIView, LikeProductCreateAPIView
 from apps.views.shop.market_product import MarketProductListAPIView
@@ -48,6 +49,7 @@ urlpatterns = [
     path('flow-create', FlowCreateAPIView.as_view()),
     path('flows', FlowListAPIView.as_view()),
     path('flow-statistics', FlowStatisticsListAPIView.as_view()),
+    path('flow/<int:pk>', FlowDestroyAPIView.as_view()),
 
     path('region-select', RegionSelectListAPIView.as_view()),
     path('district-select', DistrictSelectListAPIView.as_view()),
