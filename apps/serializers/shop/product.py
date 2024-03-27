@@ -21,7 +21,7 @@ class ProductListSerializer(serializers.ModelSerializer):
 
     @staticmethod
     def get_image(obj: Product):
-        return obj.get_image
+        return obj.get_image.image.url
 
     def get_category(self, obj: Product):
         return {

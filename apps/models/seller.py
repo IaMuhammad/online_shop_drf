@@ -89,7 +89,7 @@ class Order(models.Model):
     product = models.ForeignKey('apps.Product', verbose_name=_('product'), on_delete=models.CASCADE)
     color = models.ForeignKey('apps.ProductAttribute', verbose_name=_('color'), on_delete=models.PROTECT,
                               related_name='order_color')
-    size = models.ForeignKey('apps.ProductAttribute', verbose_name=_('color'), on_delete=models.PROTECT,
+    size = models.ForeignKey('apps.ProductAttribute', verbose_name=_('size'), on_delete=models.PROTECT,
                              related_name='order_size')
     flow = models.ForeignKey('apps.Flow', verbose_name=_('flow'), on_delete=models.PROTECT, null=True, blank=True)
     region = models.CharField(verbose_name=_('region'), max_length=30, choices=Region.choices)
