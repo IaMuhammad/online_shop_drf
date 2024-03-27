@@ -5,17 +5,23 @@ from apps.models import Product, Like
 
 class ProductListSerializer(serializers.ModelSerializer):
     category = serializers.SerializerMethodField()
+    image = serializers.SerializerMethodField()
     is_liked = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
-        fields = ('id', 'name', 'description', 'price', 'is_discount', 'discount_price', 'category', 'is_liked')
+        fields = (
+        'id', 'name', 'description', 'price', 'is_discount', 'discount_price', 'category', 'is_liked', 'image')
 
     def get_is_liked(self, obj: Product):
         user = self.context.get('request').user
         if user.is_authenticated:
             return obj.is_liked(user)
         return False
+
+    @staticmethod
+    def get_image(obj: Product):
+        return obj.get_image
 
     def get_category(self, obj: Product):
         return {
@@ -29,12 +35,13 @@ class ProductDetailSerializer(serializers.ModelSerializer):
     color = serializers.SerializerMethodField()
     size = serializers.SerializerMethodField()
     is_liked = serializers.SerializerMethodField()
+    images = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
         fields = (
             'id', 'name', 'description', 'delivery', 'price', 'is_discount', 'discount_price', 'order_count', 'color',
-            'size', 'is_liked'
+            'size', 'is_liked', 'images'
         )
 
     def get_order_count(self, obj: Product):
@@ -45,6 +52,12 @@ class ProductDetailSerializer(serializers.ModelSerializer):
         if user.is_authenticated:
             return obj.is_liked(user)
         return False
+
+    def get_images(self, obj: Product):
+        images = []
+        for image in obj.get_images:
+            images.append(image.image.url)
+        return images
 
     @staticmethod
     def get_color(obj: Product):
