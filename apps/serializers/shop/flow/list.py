@@ -12,7 +12,7 @@ class FlowListSerializer(serializers.ModelSerializer):
 
     def get_product(self, obj):
         if obj.product.get_image:
-            image = self.context.get('request')._current_scheme_host + obj.product.get_image.image.url
+            image = obj.product.get_image.image.url
         else:
             image = ''
         return {
