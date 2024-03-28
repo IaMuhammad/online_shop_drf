@@ -17,4 +17,4 @@ class RequestCreateModelSerializer(serializers.ModelSerializer):
 class RequestListModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Request
-        fields = ('id', 'user', 'card', 'money')
+        fields = ('id', 'user', 'card', 'money', 'status', 'date')
