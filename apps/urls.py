@@ -5,6 +5,7 @@ from apps.views.shop import BannerListAPIView, CategoryListAPIView, ProductListA
     FlowListAPIView
 from apps.views.shop.delete import FlowDestroyAPIView
 from apps.views.shop.flow import FlowStatisticsListAPIView
+from apps.views.shop.flow.detail import FlowRetrieveAPIView
 from apps.views.shop.like_product import LikeProductListAPIView, LikeProductCreateAPIView
 from apps.views.shop.market_product import MarketProductListAPIView
 from apps.views.shop.order import OrderCreateAPIView, OrderListAPIView
@@ -50,6 +51,7 @@ urlpatterns = [
     path('flows', FlowListAPIView.as_view()),
     path('flow-statistics', FlowStatisticsListAPIView.as_view()),
     path('flow/<int:pk>', FlowDestroyAPIView.as_view()),
+    path('flow-detail/<int:pk>', FlowRetrieveAPIView.as_view()),
 
     path('region-select', RegionSelectListAPIView.as_view()),
     path('district-select', DistrictSelectListAPIView.as_view()),

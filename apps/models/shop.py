@@ -72,6 +72,10 @@ class Product(TranslatableModel):
         return Like.objects.filter(products__in=[self], user=user).exists()
 
     @property
+    def get_order_count(self):
+        return 0
+
+    @property
     def liked_users(self):
         return self.like_set.values_list('user_id', flat=True)
 
