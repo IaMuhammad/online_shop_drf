@@ -10,7 +10,7 @@ class FlowListSerializer(serializers.ModelSerializer):
         model = Flow
         fields = ('id', 'name', 'product',)
 
-    def get_product(self, obj):
+    def get_product(self, obj: Flow):
         if obj.product.get_image:
             image = obj.product.get_image.image.url
         else:
@@ -19,5 +19,6 @@ class FlowListSerializer(serializers.ModelSerializer):
             'id': obj.product.id,
             'name': obj.product.name,
             'description': obj.product.description,
-            'get_image': image
+            'pay': obj.product.pay,
+            'get_image': image,
         }

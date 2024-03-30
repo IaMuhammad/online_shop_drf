@@ -15,6 +15,10 @@ class OrderCreateModelSerializer(serializers.ModelSerializer):
     def validate(self, attrs):
         data = super().validate(attrs)
         data['customer'] = self.context['request'].user
+        if data.get('product').is_discount:
+            data['price'] = data['product'].discount_price
+        else:
+            data['price'] = data['product'].price
         return data
 
 

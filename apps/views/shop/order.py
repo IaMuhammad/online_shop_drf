@@ -28,5 +28,5 @@ class OrderListAPIView(ListAPIView):
 
     def get_queryset(self):
         if self.request.user.is_authenticated:
-            return Order.objects.filter(customer=self.request.user)
+            return Order.objects.filter(customer=self.request.user).order_by('-id')
         return Order.objects.none()
