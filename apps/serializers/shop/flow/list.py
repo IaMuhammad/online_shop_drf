@@ -26,4 +26,4 @@ class FlowListSerializer(serializers.ModelSerializer):
         }
 
     def get_url(self, obj):
-        return f'{DOMAIN}/shop/flow/{obj.id}'
+        return f'/shop/flow/{obj.id}'
