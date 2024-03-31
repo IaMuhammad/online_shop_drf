@@ -222,3 +222,5 @@ CORS_ALLOW_METHODS = (
     "POST",
     "PUT",
 )
+
+DOMAIN = os.getenv('DOMAIN')
