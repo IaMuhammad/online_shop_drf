@@ -1,0 +1,113 @@
+Region:
+  - fields:
+    id: 1,
+    translations:
+      - language_code: uz
+        name: "Andijon viloyati"
+      - language_code: ru
+        name: "Андижанская область"
+
+
+  - fields:
+      id: 2,
+      translations:
+        - language_code: uz
+          name: "Bukhoro viloyati",
+        - language_code: ru
+          name: "Бухарская область",
+
+  - fields:
+      id: 3,
+      translations:
+        - language_code: uz
+          name: "Farg'ona viloyati",
+        - language_code: ru
+          name: "Ферганская область",
+
+  - fields:
+      id: 4,
+      translations:
+        - language_code: uz
+          name: "Jizzax viloyati",
+        - language_code: ru
+          name: "Джизакская область",
+
+  - fields:
+      id: 5,
+      translations:
+        - language_code: uz
+          name: "Namangan viloyati",
+        - language_code: ru
+          name: "Наманганская область",
+
+  - fields:
+      id: 6,
+      translations:
+        - language_code: uz
+          name: "Navoiy viloyati",
+        - language_code: ru
+          name: "Навоийская область",
+
+  - fields:
+      id: 7,
+      translations:
+        - language_code: uz
+          name: "Qashqadaryo viloyati",
+        - language_code: ru
+          name: "Кашкадарьинская область",
+
+  - fields:
+      id: 8,
+      translations:
+        - language_code: uz
+          name: "Qoraqalpog'iston Respublikasi",
+        - language_code: ru
+          name: "Республика Каракалпакстан",
+
+  - fields:
+      id: 9,
+      translations:
+        - language_code: uz
+          name: "Samarqand viloyati",
+        - language_code: ru
+          name: "Самаркандская область",
+
+  - fields:
+      id: 10,
+      translations:
+        - language_code: uz
+          name: "Siradaryo viloyati",
+        - language_code: ru
+          name: "Сырдарьинская облась",
+
+  - fields:
+      id: 11,
+      translations:
+        - language_code: uz
+          name: "Surxondaryo Viloyati",
+        - language_code: ru
+          name: "Сурхандарьинская область",
+
+  - fields:
+      id: 12,
+      translations:
+        - language_code: uz
+          name: "Toshkent shahri",
+        - language_code: ru
+          name: "Город Ташкент",
+
+  - fields:
+      id: 13,
+      translations:
+        - language_code: uz
+          name: "Toshkent viloyati",
+        - language_code: ru
+          name: "Ташкентская область",
+
+  - fields:
+      id: 14,
+      translations:
+        - language_code: uz
+          name: "Xorazm viloyati",
+        - language_code: ru
+          name: "Хорезмская область",
