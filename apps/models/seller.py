@@ -69,22 +69,6 @@ class Order(models.Model):
         HOLD = 'hold', _('Hold')
         ARCHIVED = 'archived', _('Arxivlandi')
 
-    class Region(models.TextChoices):
-        TOSHKENT_SHAXRI = 'tashkent', _('Toshkent')
-        ANDIJON = 'andijon', _('Andijon')
-        BUXORO = 'buxoro', _('Buxoro')
-        FARGONA = 'fargona', _('Fargona')
-        JIZZAX = 'jizzax', _('Jizzax')
-        NAMANGAN = 'namangan', _('Namangan')
-        NAVOIY = 'navoiy', _('Navoy')
-        QASHQADARYO = 'qashqadaryo', _('Qashqadaryo')
-        QORAQALPOGISTON = 'qoraqalpogiston', _('Qoraqalpogiston')
-        SAMARQAND = 'samarqand', _('Samarqand')
-        SIRDARYO = 'sirdaryo', _('Sirdyo')
-        SURXONDARYO = 'surxondaryo', _('Surxondaryo')
-        TOSHKENT_VILOYATI = 'toshkent viloyati', _('Toshkent viloyati')
-        XORAZM = 'xorazm', _('Xorazm')
-
     status = models.CharField(verbose_name=_('status'), max_length=30, choices=Status.choices, default=Status.NEW)
     product = models.ForeignKey('apps.Product', verbose_name=_('product'), on_delete=models.CASCADE)
     color = models.ForeignKey('apps.ProductAttribute', verbose_name=_('color'), on_delete=models.PROTECT,
@@ -92,7 +76,7 @@ class Order(models.Model):
     size = models.ForeignKey('apps.ProductAttribute', verbose_name=_('size'), on_delete=models.PROTECT,
                              related_name='order_size')
     flow = models.ForeignKey('apps.Flow', verbose_name=_('flow'), on_delete=models.PROTECT, null=True, blank=True)
-    region = models.CharField(verbose_name=_('region'), max_length=30, choices=Region.choices)
+    region = models.ForeignKey('apps.Region', verbose_name=_('region'), on_delete=models.CASCADE, default=1)
     customer = models.ForeignKey('apps.User', verbose_name=_('customer'), on_delete=models.CASCADE)
     customer_number = models.CharField(verbose_name=_('customer_number'), max_length=20, null=False, blank=False)
     customer_name = models.CharField(verbose_name=_('customer_name'), max_length=50, null=False, blank=False)
