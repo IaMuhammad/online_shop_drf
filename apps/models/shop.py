@@ -63,6 +63,7 @@ class Product(TranslatableModel):
     discount_price = models.DecimalField(verbose_name=_('discount_price'), max_digits=99, decimal_places=2,
                                          default=Decimal(0), blank=True)
     quantity = models.IntegerField(verbose_name=_('quantity'))
+    add_flow = models.BooleanField(default=True, verbose_name=_('add_flow'))
 
     class Meta:
         verbose_name = _('Product')

@@ -46,12 +46,13 @@ class CategoryAdmin(TranslatableAdmin):
 
 @admin.register(Product)
 class ProductAdmin(TranslatableAdmin):
-    list_display = ('id', 'name')
+    list_display = ('id', 'name', 'add_flow')
+    list_editable = ('add_flow',)
     inlines = [ProductAttributeTranslatableTabularInline, ImageTabularInline]
 
     fieldsets = [
         (None, {'fields': ['name', 'delivery', 'description']}),
-        ('Details', {'fields': ['category', 'price', 'is_discount', 'discount_price', 'quantity', 'pay']}),
+        ('Details', {'fields': ['category', 'price', 'is_discount', 'discount_price', 'quantity', 'pay', 'add_flow']}),
     ]
 
 

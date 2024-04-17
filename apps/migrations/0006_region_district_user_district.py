@@ -3,7 +3,7 @@
 from django.db import migrations, models
 import django.db.models.deletion
 
-
+import parler.models
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -17,6 +17,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=55)),
             ],
+            bases=(parler.models.TranslatableModelMixin, models.Model),
         ),
         migrations.CreateModel(
             name='District',

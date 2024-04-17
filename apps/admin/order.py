@@ -5,10 +5,14 @@ from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
+from parler.admin import TranslatableAdmin
 
 from apps.inline.like import LikeTranslatableTabularInline
 from apps.models.seller import Flow, Order
 from apps.models.shop import Like
+from apps.models.user import Region
+
+# from apps.models.user import Region
 
 csrf_protect_m = method_decorator(csrf_protect)
 sensitive_post_parameters_m = method_decorator(sensitive_post_parameters())
@@ -50,3 +54,8 @@ class LikeAdmin(admin.ModelAdmin):
 
     def product_quantity(self, obj):
         return obj.products.count()
+
+
+@admin.register(Region)
+class RegionAdmin(TranslatableAdmin):
+    list_display = ('id', 'name')

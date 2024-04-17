@@ -8,7 +8,7 @@ from apps.serializers.shop.market_product import MarketProductListSerializer
 
 class MarketProductListAPIView(ListAPIView):
     serializer_class = MarketProductListSerializer
-    queryset = Product.objects.order_by('id')
+    queryset = Product.objects.filter(add_flow=True).order_by('id')
     filter_backends = [SearchFilter]
     search_fields = ('name',)
 
