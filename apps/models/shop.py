@@ -52,9 +52,9 @@ class Image(models.Model):
 
 class Product(TranslatableModel):
     translate = TranslatedFields(
-        name=models.CharField(max_length=255),
-        delivery=models.CharField(max_length=255, null=True, blank=True),
-        description=models.TextField(null=True, blank=True),
+        name=models.CharField(max_length=255, verbose_name=_('name')),
+        delivery=models.CharField(max_length=255, verbose_name=_('delivery'), null=True, blank=True),
+        description=models.TextField(null=True, verbose_name=_('description'), blank=True),
     )
     category = models.ForeignKey('apps.Category', verbose_name=_('category'), on_delete=models.PROTECT)
     price = models.DecimalField(verbose_name=_('price'), max_digits=99, decimal_places=2)
@@ -129,10 +129,10 @@ class Product(TranslatableModel):
 
 class Attribute(TranslatableModel):
     translate = TranslatedFields(
-        name=models.CharField(max_length=255)
+        name=models.CharField(max_length=255, verbose_name=_('name'))
     )
 
-    code = models.CharField(max_length=255)
+    code = models.CharField(max_length=255, verbose_name=_('code'))
 
     class Meta:
         verbose_name = _('Attribute')
@@ -168,7 +168,7 @@ class Like(models.Model):
 
 
 class Banner(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, verbose_name=_('name'))
     image = models.ImageField(verbose_name=_('image'), upload_to='banner/%Y/%m/')
     is_active = models.BooleanField(verbose_name=_('is_active'), default=True)
 
