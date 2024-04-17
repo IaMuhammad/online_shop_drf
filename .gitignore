@@ -275,3 +275,6 @@ static/*
 
 media
 media/*
+
+locale/
+locale/*

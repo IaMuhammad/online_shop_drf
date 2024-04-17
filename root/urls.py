@@ -24,7 +24,8 @@ urlpatterns = [
     path('api/v1/swagger', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path('admin/', admin.site.urls),
-    path('api/v1/', include('apps.urls'))
+    path('api/v1/', include('apps.urls')),
+    path('rosetta/', include('rosetta.urls')),
 ]
 urlpatterns += [path("i18n/", include("django.conf.urls.i18n")), ]
 
