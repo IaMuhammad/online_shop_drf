@@ -15,7 +15,6 @@ createsuperuser:
 	python3 manage.py createsuperuser
 
 makemessages:
-	python3 manage.py makemessages -l en --ignore venv
 	python3 manage.py makemessages -l ru --ignore venv
 	python3 manage.py makemessages -l uz --ignore venv
 
